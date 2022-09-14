@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>BTC Exchange</title>
+  </head>
+  
+  <body>
+    <h1>BTC Exchange</h1>
+    <input type="number" id="inputBtcPrice" placeholder="What is Bitcoin price today?" style="width:200px"/>
+    <button id="btcBtn">Submit BTC price</button>
+    <p id="btc">Current BTC price is ____ USD per 1 BTC</p>
+    <input type="number" id="inputUsdAmount" placeholder="How much $ do you have?" style="width:200px"/>
+    <button id="usdBtn">Submit USD amount</button>
+    <p id="usd">You have ____ USD</p>
+    <h2></h2>
+    <script>
+      let BTC = 0;
+      let USD = 0;
+      const btcTextSign = document.getElementById('btc');
+      const usdTextSign = document.getElementById('usd');
+      const BTCPrice = document.getElementById('inputBtcPrice');
+      const USDAmount = document.getElementById('inputUsdAmount');
+      const BTCBtn = document.getElementById('btcBtn');
+      const USDBtn = document.getElementById('usdBtn');
+      BTCBtn.addEventListener('click', function (event) {
+        if (BTCPrice.value == '') {
+          alert("Enter BTC price")
+        } else {
+          BTC = BTCPrice.value;
+          btcTextSign.innerHTML = `Current BTC price is ${BTC} USD per 1 BTC`
+        }
+      })
+      USDBtn.addEventListener('click', function (event) {
+        if (USDAmount.value == '') {
+          alert("Enter USD amount")
+        } else if (BTCPrice.value == '') {
+          console.log('else if')
+          alert("First enter BTC price")
+        } else {
+          USD = USDAmount.value;
+          usdTextSign.innerHTML = `You have ${USD} USD`
+          const eX = USD / BTC
+          document.querySelector('h2').innerHTML = `You can buy ${eX.toFixed(7)} BTC`
+        }
+      })
+
+    </script> 
+  </body>
+</html>
